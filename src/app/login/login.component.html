@@ -1,3 +1,17 @@
-<p>
-  login works!
-</p>
+<div class="ui grid container centered" >
+    <form class="ui form" [formGroup]="myform" (ngSubmit)="onSubmit(myform.value)">
+      <div class="field">
+        <input placeholder="Account" type="text" [formControl]="myform.controls.emailControl">
+        <div class="ui pointing label">
+          Please enter your login account
+        </div>
+      </div>
+      <div class="field">
+        <input placeholder="Password" type="text" [formControl]="myform.controls.passwordControl">
+        <div class="ui pointing label">
+          Please enter your login password
+        </div>
+      </div>
+      <button class="ui button" type="submit" >Submit</button>
+    </form>
+</div>
