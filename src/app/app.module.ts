@@ -8,28 +8,33 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { LoginService } from './login/login.service';
 import { SharedService } from './share.service';
+import { AddTranslatorService } from './add-translator/add-translator.service';
+import { QueryTranslatorService } from './query-translator/query-translator.service';
 
 import * as firebase from 'firebase';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
-import { QueryComponent } from './query/query.component';
 import { HomeComponent } from './home/home.component';
 import { AddTranslatorComponent } from './add-translator/add-translator.component';
+import { QueryTranslatorComponent } from './query-translator/query-translator.component';
 
 const routes : Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
-  { path: 'login', component: LoginComponent },
+  { path: 'login',            component: LoginComponent },
+  { path: 'home',             component: HomeComponent },
+  { path: 'query-translator', component: QueryTranslatorComponent },
+  { path: 'add-translator',   component: AddTranslatorComponent }
   //{ path: 'query', component: QueryComponent },
   //{ path: 'add',   component: AddComponent }
 ];
-
+/*
 const childRoutes : Routes = [
 	{ path: 'home',             component: HomeComponent },
 	{ path: 'query',            component: QueryComponent },
 	{ path: 'add-translator',   component: AddTranslatorComponent }
 ]
-
+*/
 var config = {
     apiKey: "AIzaSyBa5woCoKNdbefFWtKLQV53Zcj059Rpazg",
     authDomain: "bn-translator.firebaseapp.com",
@@ -45,9 +50,9 @@ firebase.initializeApp(config);
   declarations: [
     AppComponent,
     LoginComponent,
-    QueryComponent,
     HomeComponent,
-    AddTranslatorComponent
+    AddTranslatorComponent,
+    QueryTranslatorComponent
   ],
   imports: [
     BrowserModule,
@@ -55,9 +60,11 @@ firebase.initializeApp(config);
     HttpModule,
     ReactiveFormsModule,
     RouterModule.forRoot(routes),
-    RouterModule.forChild(childRoutes)
+    //RouterModule.forChild(childRoutes)
   ],
   providers: [
+    AddTranslatorService,
+    QueryTranslatorService,
   	LoginService,
   	SharedService
   ],

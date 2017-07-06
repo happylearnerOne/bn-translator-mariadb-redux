@@ -6,29 +6,31 @@ import * as firebase from 'firebase';
 
 @Injectable()
 export class AddTranslatorService {
-  	constructor(private http:Http){
+
+    db : any = firebase.database().ref();
+
+  	constructor(){
 
   	}
   
-    login(id: string, password: string){
-      console.log("id=",id);
-      console.log("password=", password);
-      
-          return firebase.auth()
-            .signInWithEmailAndPassword(id, password)
-            // .signInWithEmailAndPassword("fylin92@gmail.com", "075581488")
-            .then(function(user){
-              console.log("login success,",user);
-              return new Promise((resolve, reject)=>{
-                return resolve("OK");
-              });
-            })
-            .catch(function(error) {
-                // Handle Errors here.
-                console.log("login failed,",error);
-                return new Promise((resolve, reject)=>{
-                  return reject("NOT OK");
-                });
-            });
-    }
+   saveTranslator(form : any){
+
+     console.log("saveTranslator=", form);
+     var recObj = {
+
+     };
+     
+     return this.db.child("translator")
+                   .push(form)
+                   .then((result) => {
+                     console.log("in save service, result:", result);
+                     return Promise.resolve(result);
+                   })
+                   .catch((error) => {
+                     console.log("in save service, error:", error);
+                     return Promise.reject(error);
+                   });
+
+                   
+   }
 }

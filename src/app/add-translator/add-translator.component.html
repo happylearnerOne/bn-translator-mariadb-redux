@@ -1,56 +1,84 @@
 <div class="ui form">
 	<form class="ui form" [formGroup]="addform" (ngSubmit)="onSubmit(addform.value)">
-		<!-- translator's information start -->
+		<!-- translator's name/skype start -->
 		<h4 class="ui dividing header">Translator's Information</h4>	
 		<div class="fields">
 			<div class="eight wide field">
 				<label>Name</label>
-				<div class="field">
-					<input type="text" placeholder="Translator's Name" [formControl]="addform.controls.name">
-				</div>
+				<input type="text" placeholder="Translator's Name" formControlName="name">
 			</div>
 			<div class="eight wide field">
 				<label>Skype</label>
-				<div class="field">
-					<input type="text" placeholder="Translator's Skype" [formControl]="addform.controls.skype">
-				</div>	
+				<input type="text" placeholder="Translator's Skype" formControlName="skype">	
 			</div>
 		</div>
+		<!-- translator's name/skype end -->
+
+		<br/>
+
+		<!-- telephone no and contact phone no start -->
 		<div class="fields">
 			<div class="eight wide field">
-				<label>Telephone No.</label>		
-				<div class="field">
-					<input type="text" placeholder="Translator's Cellphone No." [formControl]="addform.controls.cellphone">
-				</div>	
-			</div>
+				<h4 class="ui dividing header">Telephone No.</h4>
+				<div class="fields">
+					<div class="six wide field">
+						<label>Country Code</label>		
+						<select class="ui fluid dropdown" formControlName="cntry_code">
+							<option value="CH">CH</option>
+							<option value="EN">EN</option>
+							<option value="SP">SP</option>
+							<option value="JP">JP</option>
+						</select>
+					</div>
+					<div class="ten wide field">
+						<label>Phone No.</label>
+						<input type="text" placeholder="Translator's Telephone No." formControlName="tel_no">
+					</div>
+				</div>
+			</div>			
 			<div class="eight wide field">
-				<label>Contact Telephone No.</label>		
-				<div class="field">
-					<input type="text" placeholder="Translator's Contact Telphone No." [formControl]="addform.controls.contact_tel_no">
-				</div>	
+				<h4 class="ui dividing header">Contact Telephone No.</h4>
+				<div class="fields">
+					<div class="six wide field">
+						<label>Country Code</label>		
+						<select class="ui fluid dropdown" formControlName="ct_cntry_code">
+							<option value="CH">CH</option>
+							<option value="EN">EN</option>
+							<option value="SP">SP</option>
+							<option value="JP">JP</option>
+						</select>
+					</div>
+					<div class="eight wide field">
+						<label>Contact Phone No.</label>
+						<input type="text" placeholder="Translator's Contact Telephone No." formControlName="ct_tel_no">
+					</div>
+				</div>
 			</div>
 		</div>
+		<!-- phone no and contact phone no end -->
+
+		
+		<!-- Email/Address start -->
 		<label>Email</label>
 		<div class="field">
-  		<input type="text" placeholder="Translator's Email" [formControl]="addform.controls.email">
+  		<input type="text" placeholder="Translator's Email" formControlName="email">
 		</div>
-				
 		<label>Address</label>	
 		<div class="field">
-  		<textarea rows="2" placeholder="Address"></textarea>
+  		<textarea rows="2" placeholder="Address" formControlName="address"></textarea>
 		</div>
+		<!-- Email/Address end -->
 
 		<!-- Native/Target Language start -->
 		<h4 class="ui dividing header">Native/Target Language</h4>
 		<div class="fields">
-
 			<div class="four wide field">
 				<label>Native</label>
-				<select class="ui fluid dropdown">
-					<option value="">CH</option>
-					<option value="">EN</option>
-					<option value="">SP</option>
-					<option value="">JP</option>
+				<select class="ui fluid dropdown" formControlName="native_lang">
+					<option value="CH">CH</option>
+					<option value="EN">EN</option>
+					<option value="SP">SP</option>
+					<option value="JP">JP</option>
 				</select>
 			</div>
 			<div class="one wide field">
@@ -59,94 +87,120 @@
 				<div class="fields">
 					<div class="six wide field">
 						<label>Target From</label>
-						<select class="ui fluid dropdown">
-							<option value="">CH</option>
-							<option value="">EN</option>
-							<option value="">SP</option>
-							<option value="">JP</option>
+						<select class="ui fluid dropdown" formControlName="trgt_lang_from">
+							<option value="CH">CH</option>
+							<option value="EN">EN</option>
+							<option value="SP">SP</option>
+							<option value="JP">JP</option>
 						</select>
 					</div>
 					<div class="three wide field">
 						<label>Dir.</label>
-						<select class="ui fluid dropdown">
-							<option value="">></option>
-							<option value=""><></option>
+						<select class="ui fluid dropdown" formControlName="direction">
+							<option value=">">></option>
+							<option value="<>"><></option>
 						</select>
 					</div>
 					<div class="six wide field">
 						<label>Target To</label>
-						<select class="ui fluid dropdown">
-							<option value="">CH</option>
-							<option value="">EN</option>
-							<option value="">SP</option>
-							<option value="">JP</option>
+						<select class="ui fluid dropdown" formControlName="trgt_lang_to">
+							<option value="CH">CH</option>
+							<option value="EN">EN</option>
+							<option value="SP">SP</option>
+							<option value="JP">JP</option>
 						</select>
 					</div>
 				</div>
 			</div>
 		</div>
-
 		<!-- Native/Target Language end -->
 
 		<!-- professinal field start -->
-		<h4 class="ui dividing header">Professional Field</h4>
-		<label>Education</label>	
-		<div class="field">
-  		<input type="text" placeholder="Translator's Education" [formControl]="addform.controls.education">
+		<h4 class="ui dividing header">Professional Performance</h4>
+		<div class="fields">
+			<div class="ten wide field">
+				<label>Education</label>	
+				<input type="text" placeholder="Translator's Education" formControlName="education">
+			</div>
+			<div class="six wide field">
+				<label>Year of Experience</label>	
+				<input type="text" placeholder="Year of Experience" formControlName="year_exp">
+			</div>			
 		</div>
 		<label>Professional Field</label>	
 		<div class="field">
-  		<input type="text" placeholder="Translator's Professional Field" [formControl]="addform.controls.professional_field">
+  		<textarea rows="2" placeholder="Professional Fields" formControlName="prof_field"></textarea>
 		</div>
-		<label>Year of Experience</label>	
-		<div class="field">
-  		<input type="text" placeholder="Year of Experience" [formControl]="addform.controls.year_exp">
-		</div>
+		
 		<label>Certificate</label>	
 		<div class="field">
-  		<input type="text" placeholder="Translator's Certificate" [formControl]="addform.controls.certificate">
+  		<textarea rows="2" placeholder="Certificate" formControlName="certificate"></textarea>
 		</div>
 		<label>Reference Works</label>	
 		<div class="field">
-  		<input type="text" placeholder="Translator's Reference Works" [formControl]="addform.controls.ref_works">
+  		<input type="text" placeholder="Translator's Reference Works" formControlName="ref_works">
 		</div>
-
 		<!-- professional field end -->
 
 		<!-- test translation result start -->
 		<h4 class="ui dividing header">Test Translation</h4>
-		<label>Result</label>	
-		<div class="field">
-  		<input type="text" placeholder="Result of Translator's Test Translation" [formControl]="addform.controls.test_trans_result">
-		</div>
-		<label>Comments</label>	
-		<div class="field">
-  		<input type="text" placeholder="Comments to the translator" [formControl]="addform.controls.comments">
+		<div class="fields">
+			<div class="three wide field">
+				<label>Result</label>	
+				<select class="ui fluid dropdown" formControlName="tt_result">
+					<option value="Qualified">Qualified</option>
+					<option value="NOT Qualified">NOT Qualified</option>
+				</select>
+			</div>
+			<div class="thirteen wide field">
+				<label>Comments</label>	
+				<textarea rows="2" placeholder="Comments" formControlName="comments"></textarea>
+			</div>
 		</div>
 		<!-- test translation result end -->
 
-		<!-- wages to the translator start -->
+		<!-- undertaking conditions start -->
 		<h4 class="ui dividing header">Undertaking Conditions</h4>
-		<label>Translation Fee</label>	
-		<div class="field">
-  		<input type="text" placeholder="Translator's Translation Fee" [formControl]="addform.controls.trans_fee">
-		</div>
-		<label>Proofreading Fee</label>	
-		<div class="field">
-  		<input type="text" placeholder="Translator's Proofreading Fee" [formControl]="addform.controls.proofread_fee">
-		</div>
-		<label>Undertaking Words per day</label>	
-		<div class="field">
-  		<input type="text" placeholder="Undertaking workds per day" [formControl]="addform.controls.words_per_day">
-		</div>		
-		<label>Pay Type</label>	
-		<div class="field">
-  		<select class="ui fluid dropdown">
-  			<option value="">Paypal</option>
-  			<option value="">Skrill</option>
-  			<option value="">TT</option>
+		<div class="fields">
+			<div class="four wide field">
+				<label>Translation Fee</label>
+				<input type="text" placeholder="Translation Fee" formControlName="trans_fee">
+			</div>
+			<div class="four wide field">
+				<label>Proofreading Fee</label>
+				<input type="text" placeholder="Proofreading Fee" formControlName="proofreading_fee">
+			</div>
+			<div class="four wide field">
+				<label>Words/PD</label>
+				<input type="text" placeholder="Workds Per Day" formControlName="words_per_day">
+			</div>
+			<div class="four wide field">
+				<label>Pay Type</label>	
+				<select class="ui fluid dropdown" formControlName="pay_type">
+  				<option value="Paypal">Paypal</option>
+  				<option value="Skrill">Skrill</option>
+  				<option value="TT">TT</option>
   		</select>
+			</div>
 		</div>
-		<!-- wages to the translator end -->
+		<!-- undertaking conditions end -->
+
+		<div class="field">
+			<label>Other Info.</label>	
+			<input type="text" placeholder="Other Information" formControlName="other_info">
+		</div>
+		<div class="field">
+			<label>Advice</label>	
+			<input type="text" placeholder="Advice" formControlName="advice">
+		</div>
+		<div class="field">
+			<label>Description</label>	
+			<input type="text" placeholder="Description" formControlName="desc">
+		</div>
+		<button class="ui primary button" type="submit">Save</button>
+		<button class="ui button">Discard</button>
 	</form>
+	<br/>
+	<br/>
+	<br/>
 </div>
