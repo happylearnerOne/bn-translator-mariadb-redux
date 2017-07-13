@@ -15,6 +15,7 @@ export class QueryTranslatorComponent implements OnInit {
   			  	  private queryTranslatorService : QueryTranslatorService) { }
 
   ngOnInit() {
+    /*
   	this.queryTranslatorService.searchTranslator(this.queryform)
   		.then((result) => {
   			console.log("query-ngOnInit, result:", result);
@@ -22,6 +23,7 @@ export class QueryTranslatorComponent implements OnInit {
   		.catch((error) => {
   			console.log("query-ngOnInit, error:", error);
   		});
+      */
   }
 
 }

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 // import { Promise } from 'es6-promise';
 // import 'rxjs/add/operator/toPromise'; 
-import * as firebase from 'firebase';
+// import * as firebase from 'firebase';
 
 @Injectable()
 export class LoginService {
@@ -13,7 +13,11 @@ export class LoginService {
     login(id: string, password: string){
       console.log("id=",id);
       console.log("password=", password);
-      
+
+      return new Promise((resolve, reject)=>{
+                return resolve("OK");
+              });
+      /*
           return firebase.auth()
             .signInWithEmailAndPassword(id, password)
             // .signInWithEmailAndPassword("fylin92@gmail.com", "075581488")
@@ -30,5 +34,6 @@ export class LoginService {
                   return reject("NOT OK");
                 });
             });
+            */
     }
 }

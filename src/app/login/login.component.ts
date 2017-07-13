@@ -28,6 +28,7 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(form: any) : void {
+    
   	this.loginService.login(form.emailControl, form.passwordControl)
   		.then((result) => {
   			console.log("result=", result);
@@ -42,6 +43,7 @@ export class LoginComponent implements OnInit {
   			this.sharedService.loginAccount = "";
   			alert("login failed");
   		});
+      
   }
 
 

@@ -11,7 +11,7 @@ import { SharedService } from './share.service';
 import { AddTranslatorService } from './add-translator/add-translator.service';
 import { QueryTranslatorService } from './query-translator/query-translator.service';
 
-import * as firebase from 'firebase';
+// import * as firebase from 'firebase';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -44,7 +44,7 @@ var config = {
     messagingSenderId: "1008007421898"
   };
 
-firebase.initializeApp(config);
+// firebase.initializeApp(config);
 
 @NgModule({
   declarations: [

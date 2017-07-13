@@ -48,6 +48,7 @@ export class AddTranslatorComponent implements OnInit {
   }
 
   onSubmit(form: any){
+    /*
   	console.log("controller form=", form);
   	this.addTranslatorService.saveTranslator(form)
   		.then((result) => {
@@ -56,6 +57,7 @@ export class AddTranslatorComponent implements OnInit {
   		.catch((error) => {
   			console.log("onSubmit, error=", error);
   		});
+      */
   } 
 
 }
