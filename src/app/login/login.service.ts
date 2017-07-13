@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
-// import { Promise } from 'es6-promise';
-// import 'rxjs/add/operator/toPromise'; 
+import { Promise } from 'es6-promise';
+import 'rxjs/add/operator/toPromise'; 
 // import * as firebase from 'firebase';
+
+let apiUrl = "http://localhost:3000/"
 
 @Injectable()
 export class LoginService {
@@ -14,9 +16,16 @@ export class LoginService {
       console.log("id=",id);
       console.log("password=", password);
 
-      return new Promise((resolve, reject)=>{
-                return resolve("OK");
-              });
+      let promise = new Promise((resolve, reject) => {
+        this.http.get(apiUrl + "api/getAllAccounts")
+          .toPromise()
+          .then(res => {
+            console.log("get res:", res);
+            console.log("res.json():", res.json());
+            resolve();
+          });
+      });
+      return promise;
       /*
           return firebase.auth()
             .signInWithEmailAndPassword(id, password)
@@ -34,6 +43,24 @@ export class LoginService {
                   return reject("NOT OK");
                 });
             });
+
+
+search(term : string){
+          let promise = new Promise((resolve, reject) => {
+              console.log("calling a promise");
+              let apiURL = `${this.apiRoot}?term=${term}&media=music&limit=20`;
+              this.http.get(apiURL)
+                  .toPromise()
+                  .then(res => {
+                      console.log("get res:", res);
+                      console.log("res.json():", res.json());
+                      resolve();
+                  });
+          });
+          return promise;
+      }
+
+
             */
     }
 }

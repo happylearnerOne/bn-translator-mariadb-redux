@@ -5,6 +5,8 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 
+var login = require('./api/login');
+
 // var index = require('./routes/index');
 // var users = require('./routes/users');
 
@@ -27,7 +29,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '..', 'dist')));
 
-console.log(express.static(path.join(__dirname, '..', 'dist')));
+// console.log(express.static(path.join(__dirname, '..', 'dist')));
+
+app.use('/', login);
 
 // app.use('/', index);
 // app.use('/users', users);
