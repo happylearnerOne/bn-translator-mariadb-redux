@@ -1,37 +1,31 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
-// import { Promise } from 'es6-promise';
-// import 'rxjs/add/operator/toPromise'; 
+import { Promise } from 'es6-promise';
+import 'rxjs/add/operator/toPromise'; 
 // import * as firebase from 'firebase';
+
+let apiUrl = "http://localhost:3000/";
 
 @Injectable()
 export class AddTranslatorService {
 
     // db : any = firebase.database().ref();
 
-  	constructor(){
+  	constructor(private http : Http){
 
   	}
   
    saveTranslator(form : any){
-
-     console.log("saveTranslator=", form);
-     var recObj = {
-
-     };
-     /*
-     return this.db.child("translator")
-                   .push(form)
-                   .then((result) => {
-                     console.log("in save service, result:", result);
-                     return Promise.resolve(result);
-                   })
-                   .catch((error) => {
-                     console.log("in save service, error:", error);
-                     return Promise.reject(error);
-                   });
-                   */
-
-                   
+     let promise = new Promise((resolve, reject) => {
+       this.http.post(apiUrl + "api/addTranslator", form)
+         .toPromise()
+         .then(res => {
+           return resolve();
+         })
+         .catch(error => {
+           return reject();
+         });
+     });     
+     return promise;                   
    }
 }

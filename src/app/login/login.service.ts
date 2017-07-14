@@ -4,7 +4,9 @@ import { Promise } from 'es6-promise';
 import 'rxjs/add/operator/toPromise'; 
 // import * as firebase from 'firebase';
 
-let apiUrl = "http://localhost:3000/"
+import apiUrl from '../../config';
+
+//let apiUrl = "http://localhost:3000/";
 
 @Injectable()
 export class LoginService {
@@ -12,17 +14,20 @@ export class LoginService {
 
   	}
   
-    login(id: string, password: string){
-      console.log("id=",id);
-      console.log("password=", password);
+    login(form: any){
+      console.log("form=",form);
 
       let promise = new Promise((resolve, reject) => {
-        this.http.get(apiUrl + "api/getAllAccounts")
+        console.log("in promise");
+        this.http.post(apiUrl + "api/getAllAccounts", form)
           .toPromise()
           .then(res => {
             console.log("get res:", res);
             console.log("res.json():", res.json());
-            resolve();
+            return resolve();
+          })
+          .catch(error => {
+            return reject();
           });
       });
       return promise;

@@ -6,6 +6,8 @@ import { HttpModule } from '@angular/http';
 //import routing module
 import { RouterModule, Routes } from '@angular/router';
 
+import { Ng2SmartTableModule } from 'ng2-smart-table';
+
 import { LoginService } from './login/login.service';
 import { SharedService } from './share.service';
 import { AddTranslatorService } from './add-translator/add-translator.service';
@@ -61,6 +63,7 @@ var config = {
     ReactiveFormsModule,
     RouterModule.forRoot(routes),
     //RouterModule.forChild(childRoutes)
+    Ng2SmartTableModule
   ],
   providers: [
     AddTranslatorService,

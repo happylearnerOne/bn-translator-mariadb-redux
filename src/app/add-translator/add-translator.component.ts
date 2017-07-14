@@ -18,9 +18,9 @@ export class AddTranslatorComponent implements OnInit {
   		'name' : [],
   		'skype' : [],
   		'cntry_code' : [],
-  		'tel_no' : [],
-  		'ct_cntry_code' : [],
-  		'ct_tel_no' : [],
+  		'phone_no' : [],
+  		'ctc_cntry_code' : [],
+  		'ctc_phone_no' : [],
   		'email' : [],
   		'address' : [],
   		'native_lang' : [],
@@ -34,6 +34,7 @@ export class AddTranslatorComponent implements OnInit {
   		'ref_works' : [],
   		'tt_result' : [],
   		'comments' : [],
+      /*
   		'trans_fee' : [],
   		'proofreading_fee' : [],
   		'words_per_day' : [],
@@ -41,6 +42,7 @@ export class AddTranslatorComponent implements OnInit {
   		'other_info' : [],
   		'advice' : [],
   		'desc' : []
+      */
   	});
   }
 
@@ -48,7 +50,7 @@ export class AddTranslatorComponent implements OnInit {
   }
 
   onSubmit(form: any){
-    /*
+    
   	console.log("controller form=", form);
   	this.addTranslatorService.saveTranslator(form)
   		.then((result) => {
@@ -57,7 +59,8 @@ export class AddTranslatorComponent implements OnInit {
   		.catch((error) => {
   			console.log("onSubmit, error=", error);
   		});
-      */
+      
+
   } 
 
 }

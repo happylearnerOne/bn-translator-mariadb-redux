@@ -32,7 +32,7 @@
 					</div>
 					<div class="ten wide field">
 						<label>Phone No.</label>
-						<input type="text" placeholder="Translator's Telephone No." formControlName="tel_no">
+						<input type="text" placeholder="Translator's Telephone No." formControlName="phone_no">
 					</div>
 				</div>
 			</div>			
@@ -41,7 +41,7 @@
 				<div class="fields">
 					<div class="six wide field">
 						<label>Country Code</label>		
-						<select class="ui fluid dropdown" formControlName="ct_cntry_code">
+						<select class="ui fluid dropdown" formControlName="ctc_cntry_code">
 							<option value="CH">CH</option>
 							<option value="EN">EN</option>
 							<option value="SP">SP</option>
@@ -50,7 +50,7 @@
 					</div>
 					<div class="eight wide field">
 						<label>Contact Phone No.</label>
-						<input type="text" placeholder="Translator's Contact Telephone No." formControlName="ct_tel_no">
+						<input type="text" placeholder="Translator's Contact Telephone No." formControlName="ctc_phone_no">
 					</div>
 				</div>
 			</div>
@@ -160,6 +160,7 @@
 		<!-- test translation result end -->
 
 		<!-- undertaking conditions start -->
+		<!--
 		<h4 class="ui dividing header">Undertaking Conditions</h4>
 		<div class="fields">
 			<div class="four wide field">
@@ -183,8 +184,11 @@
   		</select>
 			</div>
 		</div>
+		-->
 		<!-- undertaking conditions end -->
 
+		<!-- other information start -->
+		<!--
 		<div class="field">
 			<label>Other Info.</label>	
 			<input type="text" placeholder="Other Information" formControlName="other_info">
@@ -197,6 +201,9 @@
 			<label>Description</label>	
 			<input type="text" placeholder="Description" formControlName="desc">
 		</div>
+		-->
+		<!-- other information end -->
+		
 		<button class="ui primary button" type="submit">Save</button>
 		<button class="ui button">Discard</button>
 	</form>

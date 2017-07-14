@@ -6,6 +6,7 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 
 var login = require('./api/login');
+var translator = require('./api/translator');
 
 // var index = require('./routes/index');
 // var users = require('./routes/users');
@@ -32,6 +33,7 @@ app.use(express.static(path.join(__dirname, '..', 'dist')));
 // console.log(express.static(path.join(__dirname, '..', 'dist')));
 
 app.use('/', login);
+app.use('/', translator);
 
 // app.use('/', index);
 // app.use('/users', users);

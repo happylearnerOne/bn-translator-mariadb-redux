@@ -19,8 +19,8 @@ export class LoginComponent implements OnInit {
   					  private sharedService : SharedService,
   					  private router : Router ) { 
   	this.myform = fb.group({
-  		'emailControl' : ['fylin92@gmail.com', Validators.required],
-  		'passwordControl' : ['075581488', Validators.required],
+  		'emailControl' : ['test@gmail.com', Validators.required],
+  		'passwordControl' : ['1234', Validators.required],
   	});
   }
 
@@ -29,12 +29,13 @@ export class LoginComponent implements OnInit {
 
   onSubmit(form: any) : void {
     
-  	this.loginService.login(form.emailControl, form.passwordControl)
+  	this.loginService.login(form)
   		.then((result) => {
   			console.log("result=", result);
   			this.sharedService.loginAccount = form.emailControl;
   			this.sharedService.loginSuccess = true;
   			console.log("on submit, and route to about");
+        console.log(this.sharedService);
   			this.router.navigate(['/home']);
   		})
   		.catch((error) => {

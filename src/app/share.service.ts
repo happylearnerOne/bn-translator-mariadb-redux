@@ -7,8 +7,8 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class SharedService {
 	  
-    loginSuccess : boolean;
-    loginAccount : string;
+    loginSuccess : boolean = false;
+    loginAccount : string = "";
 
   	constructor(){
 
