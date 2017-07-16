@@ -1,8 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectorRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
 import { QueryTranslatorService } from './query-translator.service';
 // import { Ng2SmartTableModule } from 'ng2-smart-table';
-
+import { GridOptions } from "ag-grid/main";
 
 
 @Component({
@@ -10,25 +10,19 @@ import { QueryTranslatorService } from './query-translator.service';
   templateUrl: './query-translator.component.html',
   styleUrls: ['./query-translator.component.css']
 })
-export class QueryTranslatorComponent implements OnInit {
+export class QueryTranslatorComponent {
 
-  @Input() data : object = [];
+  gridOptions: GridOptions;
+  
+  columnDefs : any;
+  data : any;
+  
   
 	queryform : FormGroup;
+  /*
   settings = {
     columns: {
-      id: {
-        title: 'ID'
-      },
-      name: {
-        title: 'Full Name'
-      },
-      skype: {
-        title: 'Skype'
-      },
-      cntry_code: {
-        title: 'Country Code'
-      },
+    
       phone_no: {
         title: 'Phone No'
       },
@@ -79,22 +73,44 @@ export class QueryTranslatorComponent implements OnInit {
       }
     }
   };
+  */
 
 
   constructor(fb: FormBuilder, 
-  			  	  private queryTranslatorService : QueryTranslatorService) { }
+  			  	  private queryTranslatorService : QueryTranslatorService,
+              private changeDetectorRef : ChangeDetectorRef) { 
+    this.gridOptions = <GridOptions>{};
+
+    this.columnDefs = [
+      {headerName: "ID", field: "id"},
+      {headerName: "Full Name", field: "name"},
+      {headerName: "Skype", field: "skype"},
+      {headerName: "Country Code", field: "cntry_code"}
+    ];
+
+    this.queryTranslatorService.searchTranslator()
+      .then((result) => {
+        console.log("query-ngOnInit, result:", result);
+        this.data = result;
+        this.changeDetectorRef.detectChanges();
+      })
+      .catch((error) => {
+        console.log("query-ngOnInit, error:", error);
+      });
+      
+  }
 
   ngOnInit() {
     
-  	this.queryTranslatorService.searchTranslator()
-  		.then((result) => {
-  			console.log("query-ngOnInit, result:", result);
-        this.data = result;
-  		})
-  		.catch((error) => {
-  			console.log("query-ngOnInit, error:", error);
-  		});
-      
+
+  }
+
+  onGridReady(params) {
+    params.api.sizeColumnsToFit();
+  }
+
+  selectAllRows() {
+    this.gridOptions.api.selectAll();
   }
 
 }

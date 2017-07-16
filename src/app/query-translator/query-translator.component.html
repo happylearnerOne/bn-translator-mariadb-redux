@@ -1,1 +1,23 @@
+<!--
 <ng2-smart-table [settings]="settings" [source]="data"></ng2-smart-table>
+-->
+<!--
+<ag-grid-angular style="width: 500px; height: 115px;" class="ag-fresh"
+                 [rowData]="data"
+                 [columnDefs]="columnDefs">
+                 enableSort // shorthand for [enableSort]="true"
+</ag-grid-angular>
+
+style="width: 500px; height: 115px;"
+-->
+
+
+<ag-grid-angular style="width: 500px; height: 115px;"
+				  class="ag-fresh"
+                 [rowData]="data"
+                 [columnDefs]="columnDefs"
+                 [gridOptions]="gridOptions"
+                 (gridReady)="onGridReady($event)"
+                 enableFilter
+                 enableSorting>
+</ag-grid-angular>
