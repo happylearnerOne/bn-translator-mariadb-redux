@@ -33,13 +33,14 @@ style="width: 500px; height: 115px;"
     -->
 <button (click)="onRemoveSelected($event)">Select remove</button><br/>
 <button (click)="gridOptions.api.selectAll()">Select all</button><br/>
-<ag-grid-angular style="width: 500px; height: 115px;"
+<ag-grid-angular style="width: 500px; height: 200px;"
 				 class="ag-fresh"
                  [rowData]="data"      
                  [columnDefs]="columnDefs"           
                  [gridOptions]="gridOptions"
                  (gridReady)="onGridReady($event)"
                  (rowSelected)="onRowSelected($event)"
+                 rowHeight="40"
                  enableFilter
                  enableSorting>
                  <!--
@@ -53,12 +54,13 @@ style="width: 500px; height: 115px;"
 </ag-grid-angular>
 <br/>
 <br/>
-<ag-grid-angular style="width: 500px; height: 115px;"
+<ag-grid-angular style="width: 500px; height: 200px;"
 				 class="ag-fresh"
                  [rowData]="data"                
                  [gridOptions]="gridOptions"
                  (gridReady)="onGridReady($event)"
                  (rowSelected)="onRowSelected($event)"
+                 rowHeight="50"
                  enableFilter
                  enableSorting>
                  
@@ -70,3 +72,30 @@ style="width: 500px; height: 115px;"
                  <ag-grid-column headerName="Country Code" field="cntry_code"></ag-grid-column>
                  
 </ag-grid-angular>
+
+
+<div class="ui modal" *ngIf="showModal">
+  <i class="close icon"></i>
+  <div class="header">
+    Profile Picture
+  </div>
+  <div class="image content">
+    <div class="ui medium image">
+      <img src="/images/avatar/large/chris.jpg">
+    </div>
+    <div class="description">
+      <div class="ui header">We've auto-chosen a profile image for you.</div>
+      <p>We've grabbed the following image from the <a href="https://www.gravatar.com" target="_blank">gravatar</a> image associated with your registered e-mail address.</p>
+      <p>Is it okay to use this photo?</p>
+    </div>
+  </div>
+  <div class="actions">
+    <div class="ui black deny button">
+      Nope
+    </div>
+    <div class="ui positive right labeled icon button">
+      Yep, that's me
+      <i class="checkmark icon"></i>
+    </div>
+  </div>
+</div>

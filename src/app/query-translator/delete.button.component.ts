@@ -3,7 +3,7 @@ import {ICellRendererAngularComp} from "ag-grid-angular/main";
 
 @Component({
     selector: 'child-cell',
-    template: `<span><button style="height: 20px" (click)="onDeleteRow()">delete</button></span>`
+    template: `<span><button class="tiny ui button" (click)="onDeleteRow()">delete</button></span>`
 })
 export class DeleteButtonComponent implements ICellRendererAngularComp {
 	
@@ -18,6 +18,7 @@ export class DeleteButtonComponent implements ICellRendererAngularComp {
     	console.log("params=", params);
 
         //this.params.context.componentParent.methodFromParent(`Row: ${this.params.node.rowIndex}, Col: ${this.params.colDef.headerName}`)
-        alert("press delete");
+         alert("press delete");
+        
     }
 }

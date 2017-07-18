@@ -158,6 +158,9 @@ export class QueryTranslatorComponent {
       // console.log(event);
 
   }  
+  onUpdateBtnClick() {
+    alert("emit parent");
+  }
   deleteButtonCellRenderer(params) {
 
       console.log("country222");
