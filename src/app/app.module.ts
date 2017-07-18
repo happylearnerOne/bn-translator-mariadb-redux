@@ -23,6 +23,8 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { AddTranslatorComponent } from './add-translator/add-translator.component';
 import { QueryTranslatorComponent } from './query-translator/query-translator.component';
+import { DeleteButtonComponent } from './query-translator/delete.button.component';
+import { UpdateButtonComponent } from './query-translator/update.button.component';
 
 const routes : Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -57,7 +59,9 @@ var config = {
     LoginComponent,
     HomeComponent,
     AddTranslatorComponent,
-    QueryTranslatorComponent
+    QueryTranslatorComponent,
+    DeleteButtonComponent,
+    UpdateButtonComponent
   ],
   imports: [
     BrowserModule,
@@ -68,7 +72,10 @@ var config = {
     //RouterModule.forChild(childRoutes)
     // Ng2SmartTableModule
     AgGridModule.withComponents(
-      []
+      [
+        DeleteButtonComponent,
+        UpdateButtonComponent
+      ]
     )
   ],
   providers: [

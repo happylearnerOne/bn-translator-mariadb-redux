@@ -11,13 +11,62 @@
 style="width: 500px; height: 115px;"
 -->
 
-
+<!--
 <ag-grid-angular style="width: 500px; height: 115px;"
-				  class="ag-fresh"
+				 class="ag-fresh"
                  [rowData]="data"
                  [columnDefs]="columnDefs"
                  [gridOptions]="gridOptions"
                  (gridReady)="onGridReady($event)"
                  enableFilter
                  enableSorting>
+</ag-grid-angular>
+-->
+<!--
+    this.columnDefs = [
+      {headerName: "ID", field: "id"},
+      {headerName: "Full Name", field: "name"},
+      {headerName: "Skype", field: "skype"},
+      {headerName: "Country Code", field: "cntry_code"}
+    ];
+    cellRendererFramework="ChildMessageComponent"
+    -->
+<button (click)="onRemoveSelected($event)">Select remove</button><br/>
+<button (click)="gridOptions.api.selectAll()">Select all</button><br/>
+<ag-grid-angular style="width: 500px; height: 115px;"
+				 class="ag-fresh"
+                 [rowData]="data"      
+                 [columnDefs]="columnDefs"           
+                 [gridOptions]="gridOptions"
+                 (gridReady)="onGridReady($event)"
+                 (rowSelected)="onRowSelected($event)"
+                 enableFilter
+                 enableSorting>
+                 <!--
+                 <ag-grid-column headerName="delete" field="id" [cellRenderer]="deleteButtonCellRenderer"></ag-grid-column>
+                 <ag-grid-column headerName="edit" field="id" [cellRenderer]="editButtonCellRenderer"></ag-grid-column>
+                 <ag-grid-column headerName="ID" field="id"></ag-grid-column>
+                 <ag-grid-column headerName="Full Name" field="name"></ag-grid-column>
+                 <ag-grid-column headerName="Skype" field="skype"></ag-grid-column>
+                 <ag-grid-column headerName="Country Code" field="cntry_code"></ag-grid-column>
+                 -->
+</ag-grid-angular>
+<br/>
+<br/>
+<ag-grid-angular style="width: 500px; height: 115px;"
+				 class="ag-fresh"
+                 [rowData]="data"                
+                 [gridOptions]="gridOptions"
+                 (gridReady)="onGridReady($event)"
+                 (rowSelected)="onRowSelected($event)"
+                 enableFilter
+                 enableSorting>
+                 
+                 <ag-grid-column headerName="delete" field="id" [cellRenderer]="deleteButtonCellRenderer"></ag-grid-column>
+                 <ag-grid-column headerName="edit" field="id" [cellRenderer]="editButtonCellRenderer"></ag-grid-column>
+                 <ag-grid-column headerName="ID" field="id"></ag-grid-column>
+                 <ag-grid-column headerName="Full Name" field="name"></ag-grid-column>
+                 <ag-grid-column headerName="Skype" field="skype"></ag-grid-column>
+                 <ag-grid-column headerName="Country Code" field="cntry_code"></ag-grid-column>
+                 
 </ag-grid-angular>
