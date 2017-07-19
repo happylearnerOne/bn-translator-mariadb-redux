@@ -7,6 +7,8 @@ import { GridOptions } from "ag-grid/main";
 import { EditButtonComponent } from './edit.button.component';
 import { DeleteButtonComponent } from './delete.button.component';
 
+import { SuiModal } from 'ng2-semantic-ui';
+
 
 @Component({
   selector: 'app-query-translator',
@@ -129,6 +131,8 @@ export class QueryTranslatorComponent {
   onEditBtnClick(params : any) {
     console.log("edit emit=", params);
     this.showModal = true;
+
+    this.modal.show();
   }
   onDeleteBtnClick(params: any) {
     console.log("delete emit=", params);
