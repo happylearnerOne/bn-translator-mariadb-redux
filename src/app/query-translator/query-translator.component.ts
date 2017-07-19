@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
 import { QueryTranslatorService } from './query-translator.service';
 // import { Ng2SmartTableModule } from 'ng2-smart-table';
@@ -7,9 +7,19 @@ import { GridOptions } from "ag-grid/main";
 import { EditButtonComponent } from './edit.button.component';
 import { DeleteButtonComponent } from './delete.button.component';
 
-import { SuiModal } from 'ng2-semantic-ui';
 
+// import { SuiModalService, TemplateModalConfig, ModalTemplate } from 'ng2-semantic-ui';
 
+// export interface IContext {
+//     data:string;
+// }
+
+/*
+  //@ViewChild('modalTemplate')
+    
+
+    constructor(public modalService:SuiModalService) {}
+    */
 @Component({
   selector: 'app-query-translator',
   templateUrl: './query-translator.component.html',
@@ -17,11 +27,15 @@ import { SuiModal } from 'ng2-semantic-ui';
 })
 export class QueryTranslatorComponent {
 
+  @ViewChild('modalTemplate')
+  //public modalTemplate:ModalTemplate<IContext, string, string>
+
   gridOptions: GridOptions;
   
   columnDefs : any;
   data : any;
   showModal : boolean = false;
+  dynamicContent:string = "Example";
   
 	queryform : FormGroup;
   /*
@@ -81,9 +95,13 @@ export class QueryTranslatorComponent {
   */
 
 
+
   constructor(fb: FormBuilder, 
   			  	  private queryTranslatorService : QueryTranslatorService,
-              private changeDetectorRef : ChangeDetectorRef) { 
+              private changeDetectorRef : ChangeDetectorRef
+              // ,
+              // public modalService:SuiModalService
+              ) { 
     this.gridOptions = <GridOptions>{};
 
     console.log("constructor");
@@ -129,10 +147,25 @@ export class QueryTranslatorComponent {
   }
 
   onEditBtnClick(params : any) {
-    console.log("edit emit=", params);
-    this.showModal = true;
+     console.log("222 edit emit=", params);
 
-    this.modal.show();
+    alert(1);
+
+
+    // this.modal.show();
+
+    /*
+    const config = new TemplateModalConfig<IContext, string, string>(this.modalTemplate);
+
+    config.closeResult = "closed!";
+    config.context = { data: this.dynamicContent };
+
+    this.modalService
+        .open(config)
+        .onApprove(result => {  })
+        .onDeny(result => { });
+        */
+    
   }
   onDeleteBtnClick(params: any) {
     console.log("delete emit=", params);

@@ -20,7 +20,7 @@ export class DeleteButtonComponent implements ICellRendererAngularComp {
     
 
     onDeleteRow() {
-    	console.log("delete params=", this.params);
+    	// console.log("delete params=", this.params);
 
         //this.params.context.componentParent.methodFromParent(`Row: ${this.params.node.rowIndex}, Col: ${this.params.colDef.headerName}`)
          this.onDeleteBtnClick.emit(this.params);        
