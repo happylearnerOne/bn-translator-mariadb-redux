@@ -1,66 +1,33 @@
-<!--
-<ng2-smart-table [settings]="settings" [source]="data"></ng2-smart-table>
--->
-<!--
-<ag-grid-angular style="width: 500px; height: 115px;" class="ag-fresh"
-                 [rowData]="data"
-                 [columnDefs]="columnDefs">
-                 enableSort // shorthand for [enableSort]="true"
-</ag-grid-angular>
-
-style="width: 500px; height: 115px;"
--->
-
-<!--
-<ag-grid-angular style="width: 500px; height: 115px;"
-				 class="ag-fresh"
-                 [rowData]="data"
-                 [columnDefs]="columnDefs"
-                 [gridOptions]="gridOptions"
-                 (gridReady)="onGridReady($event)"
-                 enableFilter
-                 enableSorting>
-</ag-grid-angular>
--->
-<!--
-    this.columnDefs = [
-      {headerName: "ID", field: "id"},
-      {headerName: "Full Name", field: "name"},
-      {headerName: "Skype", field: "skype"},
-      {headerName: "Country Code", field: "cntry_code"}
-    ];
-    cellRendererFramework="ChildMessageComponent"
-    -->
 <button (click)="onRemoveSelected($event)">Select remove</button><br/>
-<button (click)="gridOptions.api.selectAll()">Select all</button><br/>
-<ag-grid-angular style="width: 500px; height: 200px;"
-				 class="ag-fresh"
+<button (click)="selectAllRows()">Select all</button><br/>
+<!-- ag-grid 第一種寫法 -->
+<ag-grid-angular style="width: 100%; height: 200px;" 
+				 class="ag-fresh" 
+				 [gridOptions]="gridOptions" 
                  [rowData]="data"      
-                 [columnDefs]="columnDefs"           
-                 [gridOptions]="gridOptions"
-                 (gridReady)="onGridReady($event)"
-                 (rowSelected)="onRowSelected($event)"
-                 rowHeight="40"
-                 enableFilter
+                 [columnDefs]="columnDefs"                             
+                 (gridReady)="onGridReady($event)" 
+                 (rowSelected)="onRowSelected($event)" 
+                 rowHeight="40" 
+                 suppressHorizontalScroll="false" 
+                 pagination 
+                 enableColResize 
+                 enableFilter 
                  enableSorting>
-                 <!--
-                 <ag-grid-column headerName="delete" field="id" [cellRenderer]="deleteButtonCellRenderer"></ag-grid-column>
-                 <ag-grid-column headerName="edit" field="id" [cellRenderer]="editButtonCellRenderer"></ag-grid-column>
-                 <ag-grid-column headerName="ID" field="id"></ag-grid-column>
-                 <ag-grid-column headerName="Full Name" field="name"></ag-grid-column>
-                 <ag-grid-column headerName="Skype" field="skype"></ag-grid-column>
-                 <ag-grid-column headerName="Country Code" field="cntry_code"></ag-grid-column>
-                 -->
 </ag-grid-angular>
 <br/>
 <br/>
-<ag-grid-angular style="width: 500px; height: 200px;"
+<!-- ag-grid 第二種寫法 -->
+<!--
+<ag-grid-angular style="width: 100%; height: 200px;"
 				 class="ag-fresh"
-                 [rowData]="data"                
+                 [rowData]="data"       
                  [gridOptions]="gridOptions"
                  (gridReady)="onGridReady($event)"
                  (rowSelected)="onRowSelected($event)"
                  rowHeight="50"
+                 suppressHorizontalScroll="false"
+                 pagination
                  enableFilter
                  enableSorting>
                  
@@ -72,9 +39,10 @@ style="width: 500px; height: 115px;"
                  <ag-grid-column headerName="Country Code" field="cntry_code"></ag-grid-column>
                  
 </ag-grid-angular>
+-->
 
 
-<div class="ui modal" *ngIf="showModal">
+<div class="ui modal" #theModal>
   <i class="close icon"></i>
   <div class="header">
     Profile Picture

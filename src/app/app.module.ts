@@ -7,6 +7,7 @@ import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AgGridModule } from 'ag-grid-angular/main';
+import { SuiModule } from 'ng2-semantic-ui';
 
 
 // import { Ng2SmartTableModule } from 'ng2-smart-table';
@@ -24,7 +25,7 @@ import { HomeComponent } from './home/home.component';
 import { AddTranslatorComponent } from './add-translator/add-translator.component';
 import { QueryTranslatorComponent } from './query-translator/query-translator.component';
 import { DeleteButtonComponent } from './query-translator/delete.button.component';
-import { UpdateButtonComponent } from './query-translator/update.button.component';
+import { EditButtonComponent } from './query-translator/edit.button.component';
 
 const routes : Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -61,7 +62,7 @@ var config = {
     AddTranslatorComponent,
     QueryTranslatorComponent,
     DeleteButtonComponent,
-    UpdateButtonComponent
+    EditButtonComponent    
   ],
   imports: [
     BrowserModule,
@@ -74,9 +75,10 @@ var config = {
     AgGridModule.withComponents(
       [
         DeleteButtonComponent,
-        UpdateButtonComponent
+        EditButtonComponent
       ]
-    )
+    ),
+    SuiModule
   ],
   providers: [
     AddTranslatorService,

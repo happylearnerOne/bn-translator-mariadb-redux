@@ -1,24 +1,29 @@
-import {Component} from "@angular/core";
-import {ICellRendererAngularComp} from "ag-grid-angular/main";
+import { Component, EventEmitter, Output } from "@angular/core";
+import { ICellRendererAngularComp } from "ag-grid-angular/main";
 
 @Component({
     selector: 'child-cell',
-    template: `<span><button class="tiny ui button" (click)="onDeleteRow()">delete</button></span>`
+    template: `<span><button class="mini ui button" (click)="onDeleteRow()">delete</button></span>`
 })
 export class DeleteButtonComponent implements ICellRendererAngularComp {
-	
-    // public params: any;
+	    
+    public params: any;
+    @Output() onDeleteBtnClick : EventEmitter<any>;
+    
+    constructor() {
+        this.onDeleteBtnClick = new EventEmitter();
+    }
 
     agInit(params: any): void {
-        // this.params = params;
+        this.params = params;
     }
     
 
-    public onDeleteRow(params) {
-    	console.log("params=", params);
+    onDeleteRow() {
+    	console.log("delete params=", this.params);
 
         //this.params.context.componentParent.methodFromParent(`Row: ${this.params.node.rowIndex}, Col: ${this.params.colDef.headerName}`)
-         alert("press delete");
-        
+         this.onDeleteBtnClick.emit(this.params);        
     }
+
 }
