@@ -1,0 +1,82 @@
+<span><button class="mini ui button" (click)="onEditRow()">update</button></span>
+<ng-template let-context let-modal="modal" #modalTemplate >
+
+    <div class="content">
+        <form class="ui form">
+            <div class="field">
+                <label>ID</label>
+                <input type="text" placeholder="ID" readonly="" value="{{params.data.id}}">
+            </div>
+            <div class="field">
+                <label>SKYPE</label>
+                <input type="text" placeholder="SKYPE" readonly="" value="{{params.data.skype}}">
+            </div>
+            <div class="field">
+                <label>NAME</label>
+                <input type="text" placeholder="NAME" readonly="" value="{{params.data.name}}">
+            </div>    
+            <div class="field">
+                <label>EMAIL</label>
+                <input type="text" placeholder="EMAIL" readonly="" value="{{params.data.email}}">
+            </div>  
+            <div class="field">
+                <label>ADDRESS</label>
+                <input type="text" placeholder="ADDRESS" readonly="" value="{{params.data.adress}}">
+            </div>     
+            <div class="field">
+                <label>ID</label>
+                <input type="text" placeholder="ID" readonly="" value="{{params.data.id}}">
+            </div>
+            <div class="field">
+                <label>SKYPE</label>
+                <input type="text" placeholder="SKYPE" readonly="" value="{{params.data.skype}}">
+            </div>
+            <div class="field">
+                <label>NAME</label>
+                <input type="text" placeholder="NAME" readonly="" value="{{params.data.name}}">
+            </div>    
+            <div class="field">
+                <label>EMAIL</label>
+                <input type="text" placeholder="EMAIL" readonly="" value="{{params.data.email}}">
+            </div>  
+            <div class="field">
+                <label>ADDRESS</label>
+                <input type="text" placeholder="ADDRESS" readonly="" value="{{params.data.adress}}">
+            </div>    
+            <div class="field">
+                <label>ID</label>
+                <input type="text" placeholder="ID" readonly="" value="{{params.data.id}}">
+            </div>
+            <div class="field">
+                <label>SKYPE</label>
+                <input type="text" placeholder="SKYPE" readonly="" value="{{params.data.skype}}">
+            </div>
+            <div class="field">
+                <label>NAME</label>
+                <input type="text" placeholder="NAME" readonly="" value="{{params.data.name}}">
+            </div>    
+            <div class="field">
+                <label>EMAIL</label>
+                <input type="text" placeholder="EMAIL" readonly="" value="{{params.data.email}}">
+            </div>  
+            <div class="field">
+                <label>ADDRESS</label>
+                <input type="text" placeholder="ADDRESS" readonly="" value="{{params.data.adress}}">
+            </div>                                                                 
+        </form>
+    </div>
+    <div class="actions">
+        <button class="ui red button" (click)="modal.deny('denied')">Cancel</button>
+        <button class="ui green button" (click)="modal.approve('approved')" autofocus>OK</button>
+    </div>
+    <!--
+    <div class="header">Example</div>
+    <div class="content">
+        <p>{{ params.data.id }}</p>
+    </div>
+    <div class="actions">
+        <button class="ui red button" (click)="modal.deny('denied')">Cancel</button>
+        <button class="ui green button" (click)="modal.approve('approved')" autofocus>OK</button>
+    </div>
+    -->
+</ng-template>

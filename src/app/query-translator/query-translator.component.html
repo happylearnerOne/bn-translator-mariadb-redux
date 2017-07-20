@@ -1,45 +1,40 @@
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">Modal title</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>One fine body&hellip;</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="c('Close click')">Close</button>
+  </div>
+</ng-template>
+
+
 <button (click)="onRemoveSelected($event)">Select remove</button><br/>
 <button (click)="selectAllRows()">Select all</button><br/>
-<!-- ag-grid 第一種寫法 -->
-<ag-grid-angular style="width: 100%; height: 200px;" 
-				 class="ag-fresh" 
-				 [gridOptions]="gridOptions" 
-                 [rowData]="data"      
-                 [columnDefs]="columnDefs"                             
-                 (gridReady)="onGridReady($event)" 
-                 (rowSelected)="onRowSelected($event)" 
-                 (editBtnClick)="onEditBtnClick($event)"
-                 rowHeight="40" 
-                 suppressHorizontalScroll="false" 
-                 pagination 
-                 enableColResize 
-                 enableFilter 
-                 enableSorting>
-</ag-grid-angular>
-<br/>
-<br/>
-<!-- ag-grid 第二種寫法 -->
-<!--
-<ag-grid-angular style="width: 100%; height: 200px;"
-				 class="ag-fresh"
-                 [rowData]="data"       
-                 [gridOptions]="gridOptions"
-                 (gridReady)="onGridReady($event)"
-                 (rowSelected)="onRowSelected($event)"
-                 rowHeight="50"
-                 suppressHorizontalScroll="false"
-                 pagination
-                 enableFilter
-                 enableSorting>
-                 
-                 <ag-grid-column headerName="delete" field="id" [cellRenderer]="deleteButtonCellRenderer"></ag-grid-column>
-                 <ag-grid-column headerName="edit" field="id" [cellRenderer]="editButtonCellRenderer"></ag-grid-column>
-                 <ag-grid-column headerName="ID" field="id"></ag-grid-column>
-                 <ag-grid-column headerName="Full Name" field="name"></ag-grid-column>
-                 <ag-grid-column headerName="Skype" field="skype"></ag-grid-column>
-                 <ag-grid-column headerName="Country Code" field="cntry_code"></ag-grid-column>
-                 
-</ag-grid-angular>
--->
-
+<button (editBtnClick)="onEditBtnClick($event)"> test </button><br/>
+<table class="ui celled table">
+  <thead>
+    <tr>
+        <th>ID</th>
+        <th>SKYPE</th>
+        <th>NAME</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let tpr of data">
+      <td>{{tpr.id}}</td>
+      <td>{{tpr.skype}}</td>
+      <td>{{tpr.name}}</td>
+      <td><button (click)="tmpEditBtn(content)">Edit</button></td>
+      <td><button (click)="tmpDeleteBtn(tpr)">Delete</button></td>
+    </tr>   
+  </tbody>  
+</table>
 
