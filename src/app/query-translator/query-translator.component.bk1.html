@@ -1,0 +1,98 @@
+
+<!-- modal start -->
+<ng-template let-context let-modal="modal" #modalTemplate>
+    <div class="header">Example</div>
+    <div class="content">
+            <div class="field">
+                <label>ID</label>
+                <input type="text" placeholder="ID" readonly="" value="{{data.id}}">
+            </div>
+            <div class="field">
+                <label>SKYPE</label>
+                <input type="text" placeholder="SKYPE" readonly="" value="{{data.skype}}">
+            </div>
+            <div class="field">
+                <label>NAME</label>
+                <input type="text" placeholder="NAME" readonly="" value="{{data.name}}">
+            </div>    
+            <div class="field">
+                <label>EMAIL</label>
+                <input type="text" placeholder="EMAIL" readonly="" value="{{data.email}}">
+            </div>  
+            <div class="field">
+                <label>ADDRESS</label>
+                <input type="text" placeholder="ADDRESS" readonly="" value="{{data.adress}}">
+            </div>     
+            <div class="field">
+                <label>ID</label>
+                <input type="text" placeholder="ID" readonly="" value="{{data.id}}">
+            </div>
+            <div class="field">
+                <label>SKYPE</label>
+                <input type="text" placeholder="SKYPE" readonly="" value="{{data.skype}}">
+            </div>
+            <div class="field">
+                <label>NAME</label>
+                <input type="text" placeholder="NAME" readonly="" value="{{data.name}}">
+            </div>    
+            <div class="field">
+                <label>EMAIL</label>
+                <input type="text" placeholder="EMAIL" readonly="" value="{{data.email}}">
+            </div>  
+            <div class="field">
+                <label>ADDRESS</label>
+                <input type="text" placeholder="ADDRESS" readonly="" value="{{data.adress}}">
+            </div>    
+            <div class="field">
+                <label>ID</label>
+                <input type="text" placeholder="ID" readonly="" value="{{data.id}}">
+            </div>
+            <div class="field">
+                <label>SKYPE</label>
+                <input type="text" placeholder="SKYPE" readonly="" value="{{data.skype}}">
+            </div>
+            <div class="field">
+                <label>NAME</label>
+                <input type="text" placeholder="NAME" readonly="" value="{{data.name}}">
+            </div>    
+            <div class="field">
+                <label>EMAIL</label>
+                <input type="text" placeholder="EMAIL" readonly="" value="{{data.email}}">
+            </div>  
+            <div class="field">
+                <label>ADDRESS</label>
+                <input type="text" placeholder="ADDRESS" readonly="" value="{{data.adress}}">
+            </div>   
+    </div>
+    <div class="actions">
+        <button class="ui red button" (click)="modal.deny('denied')">Cancel</button>
+        <button class="ui green button" (click)="modal.approve('approved')" autofocus>OK</button>
+    </div>
+</ng-template>
+<!-- modal end -->
+
+<button (click)="onRemoveSelected($event)">Select remove</button><br/>
+<button (click)="selectAllRows()">Select all</button><br/>
+<button (editBtnClick)="onEditBtnClick($event)"> test </button><br/>
+<table class="ui celled table">
+  <thead>
+    <tr>
+        <th>ID</th>
+        <th>SKYPE</th>
+        <th>NAME</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let tpr of data">
+      <td>{{tpr.id}}</td>
+      <td>{{tpr.skype}}</td>
+      <td>{{tpr.name}}</td>
+      <td><button (click)="tmpEditBtn(tpr)">Edit</button></td>
+      <td><button (click)="tmpDeleteBtn(tpr)">Delete</button></td>
+    </tr>   
+  </tbody>  
+</table>
+
+

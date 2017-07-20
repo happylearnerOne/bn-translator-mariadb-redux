@@ -13,6 +13,7 @@ export class QueryTranslatorComponent{
   // public params :any;
 
   data : any;  
+  thedata : any;
 	// queryform : FormGroup;
   closeResult: string;
 
@@ -38,8 +39,8 @@ export class QueryTranslatorComponent{
       ];
   }
 
-  tmpEditBtn(content) {
-    // this.data = tpr;
+  tmpEditBtn(content, tpr) {
+    this.thedata = tpr;
 
      this.modalService.open(content).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;

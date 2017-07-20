@@ -1,12 +1,28 @@
 <ng-template #content let-c="close" let-d="dismiss">
   <div class="modal-header">
-    <h4 class="modal-title">Modal title</h4>
+    <h4 class="modal-title">{{thedata}}</h4>
     <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
   <div class="modal-body">
-    <p>One fine body&hellip;</p>
+		<div class="form-group">
+    <label for="id">id</label>
+    <input type="text" class="form-control" id="id" placeholder="id" value="{{thedata.id}}">
+  </div>
+
+    <div class="field">
+    	<label>ID</label>
+      <input type="text" placeholder="ID" value="{{thedata.id}}">
+    </div>
+    <div class="field">
+    	<label>SKYPE</label>
+      <input type="text" placeholder="SKYPE" value="{{thedata.skype}}">
+    </div>
+    <div class="field">
+    	<label>NAME</label>
+      <input type="text" placeholder="NAME" value="{{thedata.name}}">
+    </div>
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-secondary" (click)="c('Close click')">Close</button>
@@ -32,7 +48,7 @@
       <td>{{tpr.id}}</td>
       <td>{{tpr.skype}}</td>
       <td>{{tpr.name}}</td>
-      <td><button (click)="tmpEditBtn(content)">Edit</button></td>
+      <td><button (click)="tmpEditBtn(content, tpr)">Edit</button></td>
       <td><button (click)="tmpDeleteBtn(tpr)">Delete</button></td>
     </tr>   
   </tbody>  

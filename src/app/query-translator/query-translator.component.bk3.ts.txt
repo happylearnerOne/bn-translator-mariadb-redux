@@ -1,0 +1,130 @@
+import { Component, OnInit, Input, ViewChild, ChangeDetectorRef } from '@angular/core';
+import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
+import { QueryTranslatorService } from './query-translator.service';
+
+// import { GridOptions } from "ag-grid/main";
+import { ICellRendererAngularComp } from "ag-grid-angular/main";
+
+// import { EditButtonComponent } from './edit.button.component';
+// import { DeleteButtonComponent } from './delete.button.component';
+
+import { SuiModalService, TemplateModalConfig, ModalTemplate } from 'ng2-semantic-ui';
+
+export interface IContext {
+    data:string;
+}
+
+@Component({
+  selector: 'app-query-translator',
+  templateUrl: './query-translator.component.html',
+  styleUrls: ['./query-translator.component.css']
+})
+export class QueryTranslatorComponent implements OnInit {
+
+  @ViewChild('modalTemplate')
+
+  public modalTemplate:ModalTemplate<IContext, string, string>;
+  public params :any;
+
+  // gridOptions: GridOptions;
+  // columnDefs : any;
+  data : any;  
+	queryform : FormGroup;
+
+  constructor(fb: FormBuilder, 
+  			  	  private queryTranslatorService : QueryTranslatorService,
+              private changeDetectorRef : ChangeDetectorRef,
+              public modalService:SuiModalService
+              ) { 
+    
+
+    this.queryTranslatorService.searchTranslator()
+      .then((result) => {
+        console.log("query-ngOnInit, result:", result);
+        this.data = result;
+        this.changeDetectorRef.detectChanges();
+      })
+      .catch((error) => {
+        console.log("query-ngOnInit, error:", error);
+      });      
+  }
+
+  ngOnInit() {
+    
+
+  }
+
+  onGridReady(params) {
+    params.api.sizeColumnsToFit();
+
+    console.log("GridReady");
+    console.log(params.api);
+  }
+  onRowClicked(event) {
+    console.log("onRowClicked");
+    console.log(event);
+  }
+
+  selectAllRows() {
+    // this.gridOptions.api.selectAll();
+  }
+  onRemoveSelected(event) {
+    console.log("onRemoveSelected");
+  }
+
+
+  tmpEditBtn(tpr) {
+    try {
+          this.data = tpr;
+    console.log("data=", this.data);
+
+    const config = new TemplateModalConfig<IContext, string, string>(this.modalTemplate);
+
+    config.closeResult = "closed!";
+    config.context = { data: "myContext" };
+
+    this.modalService
+        .open(config)
+        .onApprove(result => { alert("ok"); })
+        .onDeny(result => { alert("deny"); });
+      }catch(e){
+
+          console.log(e);
+
+      }
+
+  }
+
+  tmpDeleteBtn(tpr) {
+    console.log("delete");
+    console.log(tpr);
+  }
+
+
+  onEditBtnClick(params : any) {
+     console.log("222 edit emit=", params);
+
+    console.log(3);
+
+
+    // this.modal.show();
+
+    
+    const config = new TemplateModalConfig<IContext, string, string>(this.modalTemplate);
+
+    config.closeResult = "closed!";
+    config.context = { data: "myContext" };
+
+    this.modalService
+        .open(config)
+        .onApprove(result => {  })
+        .onDeny(result => { });
+        
+    
+  }
+  onDeleteBtnClick(params: any) {
+    console.log("delete emit=", params);
+  }
+
+
+}

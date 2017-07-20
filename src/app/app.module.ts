@@ -8,7 +8,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AgGridModule } from 'ag-grid-angular/main';
-// import { SuiModule, SuiModalModule } from 'ng2-semantic-ui';
+import { SuiModule, SuiModalModule } from 'ng2-semantic-ui';
 
 
 // import { Ng2SmartTableModule } from 'ng2-smart-table';
@@ -79,7 +79,7 @@ var config = {
         // EditButtonComponent
       ]
     ),
-    // SuiModule,
+    SuiModule,
     NgbModule.forRoot()
   ],
   providers: [
