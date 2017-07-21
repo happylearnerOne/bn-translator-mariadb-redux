@@ -25,6 +25,7 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { AddTranslatorComponent } from './add-translator/add-translator.component';
 import { QueryTranslatorComponent } from './query-translator/query-translator.component';
+import { ConfirmModalComponent } from './confirm-modal/confirm-modal.component';
 // import { DeleteButtonComponent } from './query-translator/delete.button.component';
 // import { EditButtonComponent } from './query-translator/edit.button.component';
 
@@ -62,6 +63,7 @@ var config = {
     HomeComponent,
     AddTranslatorComponent,
     QueryTranslatorComponent,
+    ConfirmModalComponent,
     // DeleteButtonComponent,
     // EditButtonComponent    
   ],
@@ -81,6 +83,9 @@ var config = {
     ),
     SuiModule,
     NgbModule.forRoot()
+  ],
+  entryComponents: [
+    ConfirmModalComponent
   ],
   providers: [
     AddTranslatorService,

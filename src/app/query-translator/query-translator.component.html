@@ -1,56 +1,63 @@
-<ng-template #content let-c="close" let-d="dismiss">
-  <div class="modal-header">
-    <h4 class="modal-title">{{thedata}}</h4>
-    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div class="modal-body">
-		<div class="form-group">
-    <label for="id">id</label>
-    <input type="text" class="form-control" id="id" placeholder="id" value="{{thedata.id}}">
-  </div>
-
-    <div class="field">
-    	<label>ID</label>
-      <input type="text" placeholder="ID" value="{{thedata.id}}">
+<ng-template let-context let-modal="modal" #modalTemplate>
+    <div class="header">Edit Translator's Information</div>
+    <div class="content">
+      <form class="ui form" [formGroup]="editform">
+        <div class="field">
+          <label>ID</label>
+          <input type="text" placeholder="ID" readonly="" value="{{data.id}}">
+        </div>
+        <div class="field">
+          <label>Name</label>
+          <input type="text" placeholder="NAME" value="{{data.name}}" formControlName="name">
+        </div>
+        <div class="field">
+          <label>SKYPE</label>
+          <input type="text" placeholder="NAME" value="{{data.skype}}" formControlName="skype">
+        </div>        
+      </form>
+      <!--
+      <table class="ui celled table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>SKYPE</th>
+            <th>NAME</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{data.id}}</td>
+            <td>{{data.skype}}</td>
+            <td>{{data.name}}</td>
+          </tr>
+        </tbody>
+      </table>
+      -->
     </div>
-    <div class="field">
-    	<label>SKYPE</label>
-      <input type="text" placeholder="SKYPE" value="{{thedata.skype}}">
+    <div class="actions">
+        <button class="ui red button" (click)="modal.deny('denied')">Cancel</button>
+        <button class="ui green button" (click)="modal.approve('approved')" autofocus>OK</button>
     </div>
-    <div class="field">
-    	<label>NAME</label>
-      <input type="text" placeholder="NAME" value="{{thedata.name}}">
-    </div>
-  </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-secondary" (click)="c('Close click')">Close</button>
-  </div>
 </ng-template>
 
-
-<button (click)="onRemoveSelected($event)">Select remove</button><br/>
-<button (click)="selectAllRows()">Select all</button><br/>
-<button (editBtnClick)="onEditBtnClick($event)"> test </button><br/>
 <table class="ui celled table">
   <thead>
     <tr>
-        <th>ID</th>
-        <th>SKYPE</th>
-        <th>NAME</th>
-        <th>Edit</th>
-        <th>Delete</th>
+      <th>ID</th>
+      <th>SKYPE</th>
+      <th>NAME</th>
+      <th>Edit</th>
+      <th>Delete</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let tpr of data">
+    <tr *ngFor="let tpr of theResult">
       <td>{{tpr.id}}</td>
       <td>{{tpr.skype}}</td>
       <td>{{tpr.name}}</td>
-      <td><button (click)="tmpEditBtn(content, tpr)">Edit</button></td>
-      <td><button (click)="tmpDeleteBtn(tpr)">Delete</button></td>
-    </tr>   
-  </tbody>  
+      <td><button class="ui button" (click)="editBtnClick(tpr)">Edit</button></td>
+      <td><button class="ui button" (click)="deleteBtnClick(tpr)">Delete</button></td>
+    </tr>
+  </tbody>
 </table>
 

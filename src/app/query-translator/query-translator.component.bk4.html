@@ -1,0 +1,48 @@
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">Modal title</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <table class="ui celled table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>SKYPE</th>
+          <th>NAME</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{data.id}}</td>
+          <td>{{data.skype}}</td>
+          <td>{{data.name}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="c('Close click')">Close</button>
+  </div>
+</ng-template>
+
+<table class="ui celled table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>SKYPE</th>
+      <th>NAME</th>
+      <th>Edit</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let tpr of theResult">
+      <td>{{tpr.id}}</td>
+      <td>{{tpr.skype}}</td>
+      <td>{{tpr.name}}</td>
+      <td><button class="ui button" (click)="editBtnClick(content, tpr)">Edit</button></td>
+    </tr>
+  </tbody>
+</table>

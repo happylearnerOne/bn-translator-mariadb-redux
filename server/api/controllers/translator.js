@@ -1,6 +1,90 @@
 var express = require('express');
 var mariadb = require('../lib/mariadb.js');
 
+
+module.exports.DeleteTranslator = function(req, res) {
+	console.log(req.body);
+	var sql = "DELETE from translator where id = ?";
+
+	var mapArray = [req.body.id];
+	mariadb.getConnection(function(error, connection) {
+		if (error) {
+			console.log('DeleteTranslator getConnection Err: ' + error.message);           
+			res.status(500).send(error.message);
+			return error;
+		}
+		connection.query(sql, mapArray, function(error, result) {
+			if (error) {
+				console.log('DeleteTranslator query Err: ' + error.message);
+				connection.release(
+					function(error) {
+						if (error) {
+							console.log('DeleteTranslator query Err: ' + error.message);
+						}
+					}
+				);
+				res.status(500).send(error.message);
+				return error;
+			}
+			connection.release(
+				function(error) {
+					if (error) {
+						console.log('DeleteTranslator release Err: ' + error.message);
+					}
+				}
+			);
+			res.status(200).send(result);
+		});
+	});		
+}
+
+module.exports.UpdateTranslator = function(req, res) {
+
+	console.log(req.body);
+
+	var sql = "UPDATE translator SET name = ?, skype = ? WHERE id = ?";
+
+	/*
+	var mapArray = {
+		name: req.body.name,
+		skype: req.body.skype,
+		id: req.body.id
+	}
+	*/
+
+	var mapArray = [req.body.name, req.body.skype, req.body.id];
+	mariadb.getConnection(function(error, connection) {
+		if (error) {
+			console.log('UpdateTranslator getConnection Err: ' + error.message);           
+			res.status(500).send(error.message);
+			return error;
+		}
+		connection.query(sql, mapArray, function(error, result) {
+			if (error) {
+				console.log('UpdateTranslator query Err: ' + error.message);
+				connection.release(
+					function(error) {
+						if (error) {
+							console.log('UpdateTranslator query Err: ' + error.message);
+						}
+					}
+				);
+				res.status(500).send(error.message);
+				return error;
+			}
+			connection.release(
+				function(error) {
+					if (error) {
+						console.log('UpdateTranslator release Err: ' + error.message);
+					}
+				}
+			);
+			res.status(200).send(result);
+		});
+	});	
+
+}
+
 module.exports.AddTranslator = function (req, res) {
 	// console.log("get accounts:", req);
 	// console.log("body=", req.body);

@@ -1,0 +1,79 @@
+import { Component, OnInit, ViewChild, AfterViewInit, ChangeDetectorRef, NgZone } from '@angular/core';
+// import { SuiModalService, TemplateModalConfig, ModalTemplate } from 'ng2-semantic-ui';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+
+import { QueryTranslatorService } from './query-translator.service';
+
+@Component({
+  selector: 'app-query-translator',
+  templateUrl: './query-translator.component.html',
+  styleUrls: ['./query-translator.component.css']
+})
+export class QueryTranslatorComponent implements OnInit, AfterViewInit {
+
+  // @ViewChild('content')
+
+  theResult : any = [];
+  data : any = [];
+
+  constructor(private queryTranslatorService : QueryTranslatorService,
+              private changeDetectorRef : ChangeDetectorRef,
+              private modalService: NgbModal,
+              private ngZone: NgZone) { 
+    
+    
+    /*
+    this.theResult = [
+      { id: "1", skype: "skype1", name: "name1" },
+      { id: "2", skype: "skype2", name: "name2" },
+      { id: "3", skype: "skype3", name: "name3" }
+    ];
+    */
+    
+    
+    
+    /*
+    this.queryTranslatorService.searchTranslator()
+      .then((result) => {
+        console.log("query-ngOnInit, result:", result);
+        this.theResult = result;
+        this.changeDetectorRef.detectChanges();
+        // this.changeDetectorRef.reattach();
+      })
+      .catch((error) => {
+        console.log("query-ngOnInit, error:", error);
+      });    
+      */
+      
+  }
+
+  ngOnInit() {
+  }
+
+  ngAfterViewInit() {
+    this.queryTranslatorService.searchTranslator()
+      .then((result) => {
+        // console.log("query-ngOnInit, result:", result);
+        this.theResult = result;
+        this.ngZone.run(() => {
+          console.log("run console");
+        });
+        // this.changeDetectorRef.detectChanges();
+        // this.changeDetectorRef.detectChanges();
+        // this.changeDetectorRef.reattach();
+      })
+      .catch((error) => {
+        console.log("query-ngOnInit, error:", error);
+      });   
+  }
+
+  editBtnClick(content, tpr) {
+    this.data = tpr;
+
+    this.modalService.open(content).result.then((result) => {
+      alert("not ok");
+    }, (reason) => {
+      alert("close");
+    });
+  }
+}
